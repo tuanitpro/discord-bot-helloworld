@@ -1,20 +1,14 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const fetch = require('node-fetch');
 
+const fetch = require('node-fetch');
 const commandPrefix = "!";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   setInterval(updateStatus, 120000); // update status every 2 minutes
 });
-/*
-client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
-  }
-});
-*/
+
 client.on('message', (message)=> {
     if(!message.content.startsWith(commandPrefix)) return;
     const args = message.content.slice(commandPrefix.length).trim().split(/ +/g);
@@ -41,76 +35,9 @@ client.on('message', (message)=> {
     	break;
     	case "p":
     		price(message, args);
-    	break;
-    	case "kimochi":
-            sendText(message, ":banana: Ứ Ứ :banana:");
-        break;
-        case "kin":
-            sendText(message, "Xấu Trai VL :heart:");
-        break;
-            case "nhung":
-            sendText(message, ":banana: Dành cả thanh xuân để chăn chuối http://bit.ly/2rgeY8A ").then(msg => {msg.delete(10000)});
-            break;
-            case "henry":
-            sendText(message, ":shallow_pan_of_food: Chuyên bán cơm cháy, khô bò gà uy tín chất lượng, liên hệ Hotine : 0902.018.408 :shallow_pan_of_food:");
-            break;
-            case "andy":
-            sendText(message, ":eggplant::bento: Summer Shop - Chuyên kinh doanh hàng Nhật các loại :bento: :eggplant:");
-            break;
-            case "akin":
-            sendText(message, ":banana: assmin đẹp zai kinh hoàng :banana:");
-            break;
-            case "bond":
-            sendText(message, "Chuyên Tour :desert: DUBAI – Trung đông huyền ảo - Tour Úc mua nhà cho các thánh coin :rocket:");
-            break;
-            case "tony":
-            sendText(message, ":banana: Đẹp trai thanh lịch vô địch khắp vũ trụ :banana:");
-            break;
-            case "zuzu":
-            sendText(message, ":heart: Yêu thương :banana: Ry vô bờ bến http://bit.ly/2jqF0mc ");
-            break;
-            case "mg":
-            sendText(message, "Margin :boom: bay luôn tài khoản :pig:");
-            break;
-            case "pis":
-            sendText(message, " :hatched_chick: Dành cả thanh xuân để đợi khô gà :hatched_chick:");
-            break;
-            case "fomo":
-            sendText(message, " http://bit.ly/2KaE6GK ");
-            
-            break;
-            case "tailieu":
-            sendText(message, " http://bit.ly/2HVmFJs ");
-            break;
-            case "hayaku":
-            sendText(message, " Hayakuuu Hayakuuu - nhanh lên a ơi , nhanh lên!!! ");
-            break;
-            case "kande":
-            sendText(message, " cắn em đi, cắn em đi!!! ");
-            break;
-            case "choem":
-            sendText(message, " Chờ em đến độ hoa cũng héo tàn =)) http://bit.ly/2Kh30Va ");
-            break;
-            case "pump":
-            sendText(message," http://bit.ly/2JR73qf ");
-            break;
-            case "nghiemtuc":
-            sendText(message, " http://bit.ly/2Id2zNs ");
-            break;
-            case "target":
-            sendText(message," http://bit.ly/2IdruAg ");
-            break;
-            case "angi":
-            sendText(message," http://bit.ly/2JOHMgb ");
-            break;
-            case "dudinh":
-            sendImage(message," http://bit.ly/2rhyLWh ");
-            break;
-            case "allin":
-            sendImage(message,"http://bit.ly/2jpJmKf ");
-            break;
+    	break;    	
     	default:
-    		sendText(message, "Không có command này.")
+    		sendText(message, "Command not found.")
     	break;
     }
 });
@@ -138,10 +65,7 @@ function sendText(message, text){
 	message.channel.send(text).then(msg=>{msg.delete(10000)}); 
     message.delete(12000);
 }
-function sendImage(message, text){
-	message.channel.send(text).then(msg=>{msg.delete(10000)}); 
-    message.delete(12000);
-}
+
 function clear(message){
 	if (message.member.hasPermission("MANAGE_MESSAGES")) {
         message.channel.fetchMessages()
