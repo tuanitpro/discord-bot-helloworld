@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fetch = require('node-fetch');
 
-const commandPrefix = "?";
+const commandPrefix = "!";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -104,10 +104,10 @@ client.on('message', (message)=> {
             sendText(message," http://bit.ly/2JOHMgb ");
             break;
             case "dudinh":
-            sendText(message," http://bit.ly/2rhyLWh ");
+            sendImage(message," http://bit.ly/2rhyLWh ");
             break;
             case "allin":
-            sendText(message,"http://bit.ly/2jpJmKf ");
+            sendImage(message,"http://bit.ly/2jpJmKf ");
             break;
     	default:
     		sendText(message, "Không có command này.")
@@ -136,6 +136,10 @@ function help(message){
         message.channel.send({embed: embed});
 }
 function sendText(message, text){
+	message.channel.send(text).then(msg=>{msg.delete(10000)}); 
+    message.delete(12000);
+}
+function sendImage(message, text){
 	message.channel.send(text).then(msg=>{msg.delete(10000)}); 
     message.delete(12000);
 }
@@ -226,7 +230,15 @@ function updateStatus() {
     		bitcoin_percentage_of_market_cap =  json.data.bitcoin_percentage_of_market_cap;
     		total_market_cap = json.data.quotes.USD.total_market_cap; 				
 			let cap = total_market_cap/1000000000;
-           client.user.setPresence({ game: { name: `Mkt. cap: $${numberFormat(cap)}B` }, status: 'idle' });
+           client.user.setPresence(
+            {   game:
+                { 
+                    name: `Mkt. cap: $${numberFormat(cap)}B` },                     
+                    url: 'https://coinmarketcap.com/',
+                    type: 1
+                }
+            
+            );
     	});    	 
         
 }
