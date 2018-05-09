@@ -122,8 +122,7 @@ function hello(message){
 	message.channel.send("Hello " + message.author + "! Nice to meet you. :smiley: ");
 }
 function help(message){
-	 let embed = new Discord.RichEmbed()
-            
+	 let embed = new Discord.RichEmbed()            
             .setAuthor("Hello world", "http://icons.iconarchive.com/icons/froyoshark/enkel/256/Bitcoin-icon.png")
             .addField("!hello", "Sends a friendly message!")
             .addField("!help", "Sends this help embed")
