@@ -136,11 +136,8 @@ function help(message){
         message.channel.send({embed: embed});
 }
 function sendText(message, text){
-	message.channel.send(text).then(msg=>{msg.delete(1000)}); 
-    message.delete(2000);
-}
-function ping(message){
-	sendText("Pong");
+	message.channel.send(text).then(msg=>{msg.delete(10000)}); 
+    message.delete(12000);
 }
 function clear(message){
 	if (message.member.hasPermission("MANAGE_MESSAGES")) {
